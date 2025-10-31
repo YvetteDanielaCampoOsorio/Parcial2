@@ -9,7 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductoService {
-    
+
+    private List<Producto> productos = new ArrayList<>();
     private final Minimercado minimercado;
     
     public ProductoService() {
@@ -102,5 +103,21 @@ public class ProductoService {
             producto.setStock(nuevoStock);
         }
     }
+
+    public List<ProductoDTO> listarProductos() {
+        List<ProductoDTO> lista = new ArrayList<>();
+
+        for (Producto producto : productos) {
+            ProductoDTO dto = new ProductoDTO(
+                    producto.getSku(),
+                    producto.getNombre(),
+                    producto.getPrecio()
+            );
+            lista.add(dto);
+        }
+
+        return lista;
+    }
+
 
 }

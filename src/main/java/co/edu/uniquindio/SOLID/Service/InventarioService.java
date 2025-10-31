@@ -1,13 +1,12 @@
 package co.edu.uniquindio.SOLID.Service;
 
 import co.edu.uniquindio.SOLID.Model.*;
-import co.edu.uniquindio.SOLID.Model.DTO.EntradaInventarioDTO;
-import co.edu.uniquindio.SOLID.Model.DTO.ItemEntradaDTO;
-import co.edu.uniquindio.SOLID.Model.DTO.ProductoDTO;
-import co.edu.uniquindio.SOLID.Model.DTO.ProveedorDTO;
+import co.edu.uniquindio.SOLID.Model.DTO.*;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class InventarioService {
@@ -113,5 +112,28 @@ public class InventarioService {
 
         System.out.println("✅ Entrada de inventario registrada correctamente para proveedor " + proveedor.getNombre());
     }
+
+    public List<MovimientoInventarioDTO> listarMovimientos() {
+        List<MovimientoInventarioDTO> lista = new ArrayList<>();
+
+        for (MovimientoInventario mov : movimientos) {
+            // Convertir LocalDateTime a Date (porque tu DTO usa java.util.Date)
+            Date fechaConvertida = Date.from(mov.getFecha().atZone(ZoneId.systemDefault()).toInstant());
+
+            MovimientoInventarioDTO dto = new MovimientoInventarioDTO(
+                    mov.getId(),
+                    mov.getTipo(),         // Tipo (enum) directamente
+                    fechaConvertida,       // Fecha convertida
+                    mov.getProducto(),     // Producto completo
+                    mov.getCantidad(),
+                    mov.getReferencia()
+            );
+
+            lista.add(dto);
+        }
+
+        return lista;
+    }
+
 
 }
