@@ -24,6 +24,7 @@ public class Proveedor {
     public String getTelefono() { return telefono; }
     public boolean isActivo() { return activo; }
 
+    public void setNit(String nit) {}
     public void setNombre(String nombre) { this.nombre = nombre; }
     public void setContacto(String contacto) { this.contacto = contacto; }
     public void setEmail(String email) { this.email = email; }
@@ -31,20 +32,11 @@ public class Proveedor {
     public void inactivar() { this.activo = false; }
     public void activar() { this.activo = true; }
 
-    public void actualizarContacto(String contacto, String email, String telefono) {
-        this.contacto = contacto;
-        this.email = email;
-        this.telefono = telefono;
-    }
-
-    public boolean validarEmail() {
-        return email != null && email.contains("@");
-    }
-
     @Override
     public String toString() {
         return nombre != null ? nombre : (nit != null ? nit : "");
     }
+
 }
 
 
