@@ -9,7 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductoService {
-    
+
+    private List<Producto> productos = new ArrayList<>();
     private final Minimercado minimercado;
     
     public ProductoService() {
@@ -94,4 +95,29 @@ public class ProductoService {
         }
         return null;
     }
+
+    public void actualizarStock(String sku, int cantidad) {
+        Producto producto = buscarProductoEntity(sku); // busca la entidad real, no el DTO
+        if (producto != null && cantidad > 0) {
+            int nuevoStock = producto.getStock() + cantidad;
+            producto.setStock(nuevoStock);
+        }
+    }
+
+    public List<ProductoDTO> listarProductos() {
+        List<ProductoDTO> lista = new ArrayList<>();
+
+        for (Producto producto : productos) {
+            ProductoDTO dto = new ProductoDTO(
+                    producto.getSku(),
+                    producto.getNombre(),
+                    producto.getPrecio()
+            );
+            lista.add(dto);
+        }
+
+        return lista;
+    }
+
+
 }

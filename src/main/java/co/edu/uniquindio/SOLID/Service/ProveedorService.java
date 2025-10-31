@@ -8,9 +8,9 @@ import java.util.List;
 
 public class ProveedorService {
 
-    private List<Proveedor> proveedores = new ArrayList<>();
+    private static List<Proveedor> proveedores = new ArrayList<>();
 
-    public void crearProveedor(ProveedorDTO dto) {
+    public String crearProveedor(ProveedorDTO dto) {
         if (validarEmail(dto.getEmail())) {
             Proveedor proveedor = new Proveedor(
                     dto.getNit(),
@@ -23,9 +23,10 @@ public class ProveedorService {
         } else {
             System.out.println("Email inválido");
         }
+        return null;
     }
 
-    public void actualizarProveedor(ProveedorDTO dto) {
+    public String actualizarProveedor(ProveedorDTO dto) {
         Proveedor proveedor = buscarPorNit(dto.getNit());
         if (proveedor != null) {
             if (validarEmail(dto.getEmail())) {
@@ -33,20 +34,23 @@ public class ProveedorService {
                 proveedor.setNombre(dto.getNombre());
             }
         }
+        return null;
     }
 
-    public void activarProveedor(String nit) {
+    public String activarProveedor(String nit) {
         Proveedor p = buscarPorNit(nit);
         if (p != null) {
             p.activar();
         }
+        return nit;
     }
 
-    public void inactivarProveedor(String nit) {
+    public String inactivarProveedor(String nit) {
         Proveedor p = buscarPorNit(nit);
         if (p != null) {
             p.inactivar();
         }
+        return nit;
     }
 
     private void actualizarContacto(Proveedor proveedor, String contacto, String email, String telefono) {
@@ -59,11 +63,40 @@ public class ProveedorService {
     private boolean validarEmail(String email) {
         return email != null && email.contains("@");
     }
-    
-    private Proveedor buscarPorNit(String nit) {
+
+    public static Proveedor buscarPorNit(String nit) {
         return proveedores.stream()
                 .filter(p -> p.getNit().equals(nit))
                 .findFirst()
                 .orElse(null);
     }
+
+    public List<ProveedorDTO> listarProveedores() {
+        List<ProveedorDTO> lista = new ArrayList<>();
+
+        for (Proveedor proveedor : proveedores) {
+            ProveedorDTO dto = new ProveedorDTO(
+                    proveedor.getNit(),
+                    proveedor.getNombre(),
+                    proveedor.getContacto(),
+                    proveedor.getEmail(),
+                    proveedor.getTelefono(),
+                    proveedor.isActivo()
+            );
+            lista.add(dto);
+        }
+
+        return lista;
+    }
+
+    public String eliminarProveedor(String nit) {
+        Proveedor proveedor = buscarPorNit(nit); // si tienes un método que devuelve la entidad real
+        if (proveedor != null) {
+            proveedores.remove(proveedor);
+            return "✅ Proveedor eliminado correctamente.";
+        } else {
+            return "⚠️ Proveedor con NIT " + nit + " no encontrado.";
+        }
+    }
+
 }

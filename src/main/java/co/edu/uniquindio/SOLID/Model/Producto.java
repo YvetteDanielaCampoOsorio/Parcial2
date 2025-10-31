@@ -20,18 +20,7 @@ public class Producto {
     
     public void setNombre(String nombre) {this.nombre = nombre;}
     public void setPrecio(double precio) {this.precio = precio;}
-
-    public void aumentarStock(int cantidad) {
-        if (cantidad > 0) this.stock += cantidad;
-    }
-
-    public void disminuirStock(int cantidad) {
-        if (cantidad > 0 && this.stock - cantidad >= 0) this.stock -= cantidad;
-    }
-
-    public boolean tieneStockSuficiente(int cantidadRequerida) {
-        return cantidadRequerida >= 0 && this.stock >= cantidadRequerida;
-    }
+    public void setStock(int stock) { this.stock = stock; }
 
     @Override
     public String toString() {
