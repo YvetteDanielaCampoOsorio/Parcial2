@@ -30,16 +30,15 @@ public class ProveedorService {
         }
     }
 
-    public void actualizarContacto(String contacto, String email, String telefono) {
-        this.contacto = contacto;
-        this.email = email;
-        this.telefono = telefono;
+    private void actualizarContacto(Proveedor proveedor, String contacto, String email, String telefono) {
+        proveedor.setContacto(contacto);
+        proveedor.setEmail(email);
+        proveedor.setTelefono(telefono);
     }
 
-    public boolean validarEmail() {
+
+    private boolean validarEmail(String email) {
         return email != null && email.contains("@");
     }
-
-
-
+    
 }
