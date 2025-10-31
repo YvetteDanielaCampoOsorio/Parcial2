@@ -51,6 +51,7 @@ public class EntradaInventario {
         this.confirmada = true;
     }
 
+
     public List<MovimientoInventario> getMovimientosGenerados() { return movimientosGenerados; }
 }
 

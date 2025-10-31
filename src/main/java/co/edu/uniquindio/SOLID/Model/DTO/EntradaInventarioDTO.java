@@ -2,63 +2,65 @@ package co.edu.uniquindio.SOLID.Model.DTO;
 
 import co.edu.uniquindio.SOLID.Model.ItemEntrada;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class EntradaInventarioDTO {
-    private String Id;
-    private Date Fecha;
-    private String NitProveedor;
-    private List<ItemEntrada> items;
+    private String id;
+    private LocalDateTime fecha;
+    private String nitProveedor;
+    private List<ItemPedidoDTO> items;
 
     public EntradaInventarioDTO() {
     }
 
-    public EntradaInventarioDTO(String id, Date fecha, String nitProveedor, List<ItemEntrada> items) {
-        Id = id;
-        Fecha = fecha;
-        NitProveedor = nitProveedor;
+    public EntradaInventarioDTO(String id, LocalDateTime fecha, String nitProveedor, List<ItemPedidoDTO> items) {
+        this.id = id;
+        this.fecha = fecha;
+        this.nitProveedor = nitProveedor;
         this.items = items;
     }
 
     public String getId() {
-        return Id;
+        return id;
     }
 
     public void setId(String id) {
-        Id = id;
+        this.id = id;
     }
 
-    public Date getFecha() {
-        return Fecha;
+    public LocalDateTime getFecha() {
+        return fecha;
     }
 
-    public void setFecha(Date fecha) {
-        Fecha = fecha;
+    public void setFecha(LocalDateTime fecha) {
+        this.fecha = fecha;
     }
 
     public String getNitProveedor() {
-        return NitProveedor;
+        return nitProveedor;
     }
 
     public void setNitProveedor(String nitProveedor) {
-        NitProveedor = nitProveedor;
+        this.nitProveedor = nitProveedor;
     }
 
-    public List<ItemEntrada> getItems() {
+    public List<ItemPedidoDTO> getItems() {
         return items;
     }
 
-    public void setItems(List<ItemEntrada> items) {
+    public void setItems(List<ItemPedidoDTO> items) {
         this.items = items;
     }
 
     @Override
     public String toString() {
         return "EntradaInventarioDTO{" +
-                "Id='" + Id + '\'' +
-                ", Fecha=" + Fecha +
-                ", NitProveedor='" + NitProveedor + '\'' +
+                "Id='" + id + '\'' +
+                ", Fecha=" + fecha +
+                ", NitProveedor='" + nitProveedor + '\'' +
                 ", items=" + items +
                 '}';
     }
