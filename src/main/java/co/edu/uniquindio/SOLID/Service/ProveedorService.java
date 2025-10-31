@@ -59,8 +59,8 @@ public class ProveedorService {
     private boolean validarEmail(String email) {
         return email != null && email.contains("@");
     }
-    
-    private Proveedor buscarPorNit(String nit) {
+
+    public static Proveedor buscarPorNit(String nit) {
         return proveedores.stream()
                 .filter(p -> p.getNit().equals(nit))
                 .findFirst()

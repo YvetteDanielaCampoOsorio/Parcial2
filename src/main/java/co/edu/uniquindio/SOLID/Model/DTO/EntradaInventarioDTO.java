@@ -2,6 +2,7 @@ package co.edu.uniquindio.SOLID.Model.DTO;
 
 import co.edu.uniquindio.SOLID.Model.ItemEntrada;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -9,7 +10,7 @@ public class EntradaInventarioDTO {
     private String Id;
     private Date Fecha;
     private String NitProveedor;
-    private List<ItemEntrada> items;
+    private List<ItemEntradaDTO> items;
 
     public EntradaInventarioDTO() {
     }
@@ -18,7 +19,7 @@ public class EntradaInventarioDTO {
         Id = id;
         Fecha = fecha;
         NitProveedor = nitProveedor;
-        this.items = items;
+        List<ItemEntradaDTO> itemsEntradas = new ArrayList<ItemEntradaDTO>();
     }
 
     public String getId() {
@@ -45,11 +46,11 @@ public class EntradaInventarioDTO {
         NitProveedor = nitProveedor;
     }
 
-    public List<ItemEntrada> getItems() {
+    public List<ItemEntradaDTO> getItems() {
         return items;
     }
 
-    public void setItems(List<ItemEntrada> items) {
+    public void setItems(List<ItemEntradaDTO> items) {
         this.items = items;
     }
 

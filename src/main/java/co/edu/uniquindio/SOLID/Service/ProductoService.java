@@ -94,4 +94,13 @@ public class ProductoService {
         }
         return null;
     }
+
+    public void actualizarStock(String sku, int cantidad) {
+        Producto producto = buscarProductoEntity(sku); // busca la entidad real, no el DTO
+        if (producto != null && cantidad > 0) {
+            int nuevoStock = producto.getStock() + cantidad;
+            producto.setStock(nuevoStock);
+        }
+    }
+
 }
