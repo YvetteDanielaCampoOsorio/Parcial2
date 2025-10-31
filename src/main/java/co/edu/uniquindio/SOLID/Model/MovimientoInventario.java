@@ -6,6 +6,32 @@ import co.edu.uniquindio.SOLID.utils.Mappers.ProductoMapper;
 import java.time.LocalDateTime;
 
 public class MovimientoInventario {
+    public MovimientoInventario(String id, Tipo tipo, LocalDateTime fecha, int stock, int cantidad, String referencia) {
+    }
+
+    public void setTipo(Tipo tipo) {
+        this.tipo = tipo;
+    }
+
+    public void setFecha(LocalDateTime fecha) {
+        this.fecha = fecha;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public void setReferencia(String referencia) {
+        this.referencia = referencia;
+    }
+
+    public void setId(String id) {
+    }
+
     public enum Tipo { ENTRADA }
 
     private String id;

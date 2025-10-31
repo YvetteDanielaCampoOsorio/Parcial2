@@ -3,12 +3,13 @@ package co.edu.uniquindio.SOLID.Model.DTO;
 import co.edu.uniquindio.SOLID.Model.MovimientoInventario;
 import co.edu.uniquindio.SOLID.Model.Producto;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class MovimientoInventarioDTO {
     private String id;
     private MovimientoInventario.Tipo tipo;
-    private Date fecha;
+    private LocalDateTime fecha;
     private Producto producto;
     private int cantidad;
     private String referencia;
@@ -16,7 +17,7 @@ public class MovimientoInventarioDTO {
     public MovimientoInventarioDTO() {
     }
 
-    public MovimientoInventarioDTO(String id, MovimientoInventario.Tipo tipo, Date fecha, Producto producto, int cantidad, String referencia) {
+    public MovimientoInventarioDTO(String id, MovimientoInventario.Tipo tipo, LocalDateTime fecha, Producto producto, int cantidad, String referencia) {
         this.id = id;
         this.tipo = tipo;
         this.fecha = fecha;
@@ -24,6 +25,10 @@ public class MovimientoInventarioDTO {
         this.cantidad = cantidad;
         this.referencia = referencia;
     }
+
+    public MovimientoInventarioDTO(String id, MovimientoInventario.Tipo tipo, LocalDateTime fecha, int stock, int cantidad, String referencia, Object o) {
+    }
+
 
     public String getId() {
         return id;
@@ -41,11 +46,11 @@ public class MovimientoInventarioDTO {
         this.tipo = tipo;
     }
 
-    public Date getFecha() {
+    public LocalDateTime getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(LocalDateTime fecha) {
         this.fecha = fecha;
     }
 
