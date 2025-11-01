@@ -1,19 +1,18 @@
 package co.edu.uniquindio.SOLID.Model.DTO;
 
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 
 public class ProductoDTO {
     private StringProperty sku;
     private StringProperty nombre;
     private DoubleProperty precio;
+    private IntegerProperty stock;
 
     public ProductoDTO() {
         this.sku = new SimpleStringProperty();
         this.nombre = new SimpleStringProperty();
         this.precio = new SimpleDoubleProperty();
+        this.stock = new SimpleIntegerProperty();
     }
 
     public ProductoDTO(String sku, String nombre, double precio) {
@@ -39,4 +38,10 @@ public class ProductoDTO {
     public String toString() {
         return getNombre() + " - $" + String.format("%.0f", getPrecio());
     }
+
+    public int getStock() {
+        return 0;
+    }
+
+
 }

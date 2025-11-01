@@ -15,6 +15,8 @@ public class InventarioFacade {
     private final ProveedorService proveedorService;
     private final ProductoService productoService;
     private final InventarioService inventarioService;
+    private Object proveedores;
+    private Object productos;
 
     // 🔧 Constructor
     public InventarioFacade() {
@@ -63,5 +65,19 @@ public class InventarioFacade {
 
     public List<MovimientoInventarioDTO> listarMovimientos() {
         return inventarioService.listarMovimientos();
+    }
+    
+
+    public void setProveedores(Object proveedores) {
+        this.proveedores = proveedores;
+    }
+
+    public ProveedorService getProveedorService() {
+        return proveedorService;
+    }
+private final  InventarioFacade inventarioFacade = new InventarioFacade();
+
+    public void setProductos(Object productos) {
+        this.productos = productos;
     }
 }
