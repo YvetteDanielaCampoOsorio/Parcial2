@@ -41,12 +41,13 @@ public class EmpleadoService {
 
     public boolean ActualizarEmpleado(EmpleadoDTO empleadoDTO) {
         Empleado empleado = buscarEmpleadoEntity(empleadoDTO.getId());
-        if (empleado != null) {
+        if (empleado ==  null) {
             return false;
         }
         EmpleadoMapper.updateEntityFromDTO(empleado, empleadoDTO);
         return true;
     }
+
     public boolean eliminarEmpleado(String id) {
         Empleado empleado = buscarEmpleadoEntity(id);
         if (empleado == null) {
@@ -56,15 +57,20 @@ public class EmpleadoService {
         minimercado.getEmpleados().remove(empleado);
         return true;
     }
-     public boolean existeEmpleado(String id) {
-       return buscarEmpleadoEntity(id) != null;
-     }
-     private Empleado buscarEmpleadoEntity(String id) {
-         for (Empleado empleado : minimercado.getEmpleados()) {
-             if (empleado.getId().equals(id)) {
-                 return empleado;
-             }
-             return null
-         }
-     }
+
+    public boolean existeEmpleado(String id) {
+        return buscarEmpleadoEntity(id) != null;
+    }
+
+    private Empleado buscarEmpleadoEntity(String id) {
+        for (Empleado empleado : minimercado.getEmpleados()) {
+            if (empleado.getId().equals(id)) {
+                return empleado;
+            }
+            return null;
+        }
+        return null;
+    }
 }
+
+
